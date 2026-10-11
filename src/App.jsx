@@ -1,121 +1,129 @@
+
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import PedidoForm from './components/PedidoForm'
+import GeneradorPedidos from './components/GeneradorPedidos'
+import PedidoList from './components/PedidoList'
+import { generarPedidos } from './utils/generarPedidos'
 import './App.css'
+import CapacidadForm from './components/CapacidadForm'
+import Resultados from './components/Resultados'
+import EjecutarAlgoritmo from './components/EjecutarAlgoritmo'
+import { pruebaOptimizacion } from './algorithms/pruebaOptimizacion'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [pedidos, setPedidos] = useState([])
+  const [siguienteNumero, setSiguienteNumero] = useState(1)
+  const [capacidad, setCapacidad] = useState('100')
+  const [resultado, setResultado] = useState(null)
+
+  
+const ejecutarOptimizacion = () => {
+  const capacidadNumero = Number(capacidad)
+
+  if (pedidos.length === 0) {
+    alert('Primero debe registrar al menos un pedido.')
+    return
+  }
+
+  if (
+    capacidad.trim() === '' ||
+    !Number.isSafeInteger(capacidadNumero) ||
+    capacidadNumero <= 0
+  ) {
+    alert('Ingrese una capacidad entera mayor que cero.')
+    return
+  }
+
+  if (
+    pedidos.some(
+      (pedido) =>
+        !Number.isSafeInteger(pedido.peso) ||
+        pedido.peso <= 0 ||
+        !Number.isFinite(pedido.beneficio) ||
+        pedido.beneficio <= 0
+    )
+  ) {
+    alert(
+      'Los pedidos deben tener pesos enteros positivos y beneficios válidos.'
+    )
+    return
+  }
+
+  const nuevoResultado = pruebaOptimizacion(
+    pedidos,
+    capacidadNumero
+  )
+
+  setResultado(nuevoResultado)
+}
+
+  // Agregar pedidos manualmente
+  
+const agregarPedido = (nuevoPedido) => {
+  setPedidos((anteriores) => [...anteriores, nuevoPedido])
+  setResultado(null)
+}
+
+const agregarPedidos = (cantidad) => {
+  const nuevosPedidos = generarPedidos(cantidad, siguienteNumero)
+
+  setPedidos((anteriores) => [...anteriores, ...nuevosPedidos])
+  setSiguienteNumero((anterior) => anterior + cantidad)
+  setResultado(null)
+}
+
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+    <main className="contenedor">
+      <header>
+        <h1>Proyecto 1 - Análisis de Algoritmos</h1>
+        <h2>Ruteo y Planificación de Cargas</h2>
+
+        <p>
+          Sistema de optimización de pedidos mediante
+          Programación Dinámica.
+        </p>
+      </header>
+
+      <section>
+        <PedidoForm agregarPedido={agregarPedido} />
       </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
+      <section className="seccion-generador">
+        <GeneradorPedidos agregarPedidos={agregarPedidos} />
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <section className="seccion-capacidad">
+        
+      <CapacidadForm
+        capacidad={capacidad}
+        setCapacidad={(nuevaCapacidad) => {
+          setCapacidad(nuevaCapacidad)
+          setResultado(null)
+        }}
+      />
+      </section>
+
+      <section className="seccion-pedidos">
+        <PedidoList pedidos={pedidos} />
+      </section>
+
+      <section className="seccion-ejecutar">
+        <EjecutarAlgoritmo
+          ejecutar={ejecutarOptimizacion}
+          deshabilitado={pedidos.length === 0}
+        />
+      </section>
+      
+      <section className="seccion-resultados">
+        <Resultados
+          resultado={resultado}
+          capacidad={capacidad}
+        />
+      </section>
+    </main>
+
   )
 }
 

@@ -182,3 +182,176 @@
     border-right-color: var(--border);
   }
 }
+
+
+.seccion-generador {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.generador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.generador input {
+  padding: 10px;
+  width: 120px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.generador button {
+  padding: 12px 18px;
+  background-color: #2a9d8f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.generador button:hover {
+  background-color: #21867a;
+}
+
+
+/* Contenedor de la tabla */
+.tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+/* Tabla de pedidos */
+.tabla-pedidos {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+/* Encabezados */
+.tabla-pedidos th {
+  background-color: #1d3557;
+  color: white;
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+/* Todas las filas del mismo color */
+.tabla-pedidos tbody tr {
+  background-color: rgb(27, 27, 27);
+  color: white;
+}
+
+/* Mantener el mismo color al pasar el mouse */
+.tabla-pedidos tbody tr:hover {
+  background-color: rgb(27, 27, 27);
+}
+
+/* Celdas */
+.tabla-pedidos td {
+  padding: 10px;
+  border: 1px solid #f7eeee;
+}
+
+/* Efecto al pasar el mouse */
+.tabla-pedidos tbody tr:hover {
+  background-color: #3fa73b;
+}
+
+
+/* Sección de capacidad del vehículo */
+.seccion-capacidad {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.capacidad-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.capacidad-form label {
+  font-weight: bold;
+}
+
+.capacidad-form input {
+  padding: 10px;
+  width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.capacidad-info {
+  margin-top: 15px;
+  color: #1d3557;
+}
+
+
+/* Sección de resultados */
+.seccion-resultados {
+  margin-top: 20px;
+}
+
+.resultados-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.resultado-card {
+  background-color: #ffffff;
+  border: 1px solid #d9e1ea;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+}
+
+.resultado-card h4 {
+  margin: 0 0 10px;
+  color: #1d3557;
+  font-size: 14px;
+}
+
+.resultado-card p {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #213547;
+}
+
+
+/* Sección para ejecutar la optimización */
+.seccion-ejecutar {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.boton-ejecutar {
+  padding: 14px 24px;
+  background-color: #1d3557;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.boton-ejecutar:hover:not(:disabled) {
+  background-color: #457b9d;
+}
+
+.boton-ejecutar:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
