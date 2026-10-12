@@ -1,11 +1,19 @@
 // aqui se mostrara la lista de pedidos registrados
 // recibe los pedidos desde App.jsx y los organiza en una tabla para su visualización
 
-function PedidoList({ pedidos }) {
+function PedidoList({ pedidos, eliminarPedido, limpiarPedidos }) {
   return (
     <div>
       <h3>Pedidos registrados: {pedidos.length}</h3>
-
+        {pedidos.length > 0 && (
+            <button
+                type="button"
+                className="boton-limpiar"
+                onClick={limpiarPedidos}
+            >
+                Limpiar todos los pedidos
+            </button>
+        )}
       {pedidos.length === 0 ? (
         <p>No hay pedidos registrados todavía.</p>
       ) : (
@@ -19,6 +27,7 @@ function PedidoList({ pedidos }) {
                 <th>Beneficio</th>
                 <th>Coordenada X</th>
                 <th>Coordenada Y</th>
+                <th>Acciones</th>
               </tr>
             </thead>
 
@@ -31,6 +40,15 @@ function PedidoList({ pedidos }) {
                   <td>{pedido.beneficio}</td>
                   <td>{pedido.x}</td>
                   <td>{pedido.y}</td>
+                  <td>
+                    <button
+                        type="button"
+                        className="boton-eliminar"
+                        onClick={() => eliminarPedido(pedido.id)}
+                    >
+                        Eliminar
+                    </button>
+                    </td>
                 </tr>
               ))}
             </tbody>

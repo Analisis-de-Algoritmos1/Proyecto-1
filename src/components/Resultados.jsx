@@ -1,3 +1,4 @@
+import BarraCapacidad from './BarraCapacidad'
 
 function Resultados({ resultado, capacidad }) {
   if (!resultado) {
@@ -64,6 +65,10 @@ function Resultados({ resultado, capacidad }) {
         </div>
       </div>
 
+        <BarraCapacidad
+            pesoTotal={pesoTotal}
+            capacidad={capacidad}
+        />
       <h4>Pedidos seleccionados</h4>
 
       {pedidosSeleccionados.length === 0 ? (

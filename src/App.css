@@ -301,23 +301,35 @@
   margin-top: 20px;
 }
 
+
+/* Cuadrícula organizada de estadísticas */
 .resultados-resumen {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 15px;
   margin: 20px 0;
+  width: 100%;
 }
 
+/* Tarjetas del mismo tamaño */
 .resultado-card {
+  min-width: 0;
+  min-height: 125px;
+  padding: 20px 12px;
   background-color: #ffffff;
   border: 1px solid #d9e1ea;
-  border-radius: 8px;
-  padding: 15px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .resultado-card h4 {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   color: #1d3557;
   font-size: 14px;
 }
@@ -329,6 +341,19 @@
   color: #213547;
 }
 
+/* Pantallas medianas */
+@media (max-width: 850px) {
+  .resultados-resumen {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+  .resultados-resumen {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* Sección para ejecutar la optimización */
 .seccion-ejecutar {
@@ -355,3 +380,348 @@
   background-color: #a0a0a0;
   cursor: not-allowed;
 }
+
+
+/* Botón para eliminar un pedido */
+.boton-eliminar {
+  padding: 8px 12px;
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.boton-eliminar:hover {
+  background-color: #922b21;
+}
+
+/* Botón para limpiar todos los pedidos */
+.boton-limpiar {
+  padding: 10px 16px;
+  margin-bottom: 15px;
+  background-color: #1d3557;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.boton-limpiar:hover {
+  background-color: #457b9d;
+}
+
+
+/* Instrucciones de uso */
+.seccion-instrucciones {
+  margin-bottom: 20px;
+  padding: 0;
+  border: 1px solid #d9e1ea;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #213547;
+}
+
+.seccion-instrucciones summary {
+  padding: 15px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #1d3557;
+}
+
+.seccion-instrucciones summary:hover {
+  background-color: #f4f6f9;
+}
+
+.contenido-instrucciones {
+  padding: 0 20px 20px;
+  text-align: left;
+}
+
+.contenido-instrucciones h3 {
+  color: #1d3557;
+}
+
+.contenido-instrucciones ol {
+  padding-left: 25px;
+}
+
+.contenido-instrucciones li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.contenido-instrucciones p {
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+/* =====================================
+   FORMULARIO DE REGISTRO DE PEDIDOS
+===================================== */
+
+.formulario {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 750px;
+  margin: 25px auto;
+  padding: 25px;
+  background-color: #242424;
+  border: 1px solid #444;
+  border-radius: 12px;
+}
+
+/* Etiquetas de los campos */
+.formulario label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Cuadros para ingresar información */
+.formulario input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 15px;
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #555555;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Efecto al seleccionar un campo */
+.formulario input:focus {
+  border-color: #4da6ff;
+  box-shadow: 0 0 0 3px rgba(77, 166, 255, 0.2);
+}
+
+/* Texto de ejemplo */
+.formulario input::placeholder {
+  color: #aaaaaa;
+}
+
+/* Botón agregar pedido */
+.formulario button {
+  grid-column: 1 / -1;
+  padding: 13px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.formulario button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 600px) {
+  .formulario {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+}
+
+
+/* ===================================
+   ESTILO UNIFICADO DE FORMULARIOS
+   =================================== */
+
+/* Formularios y campos */
+.formulario,
+.generador,
+.capacidad-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Formulario manual en columna */
+.formulario {
+  flex-direction: column;
+  max-width: 480px;
+  margin: 20px auto;
+  align-items: stretch;
+}
+
+/* Etiquetas del formulario */
+.formulario label,
+.capacidad-form label {
+  font-weight: 600;
+}
+
+/* Cuadros de entrada */
+.formulario input,
+.generador input,
+.capacidad-form input {
+  padding: 13px 15px;
+  background-color: #ffffff;
+  color: #213547;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Efecto al seleccionar un campo */
+.formulario input:focus,
+.generador input:focus,
+.capacidad-form input:focus {
+  outline: none;
+  border-color: #457b9d;
+  box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.18);
+}
+
+/* Tamaño de los campos */
+.formulario input {
+  width: 100%;
+}
+
+.generador input,
+.capacidad-form input {
+  width: 150px;
+}
+
+/* ===================================
+   ESTILO UNIFICADO DE BOTONES
+   =================================== */
+
+.formulario button,
+.generador button,
+.boton-ejecutar {
+  padding: 13px 22px;
+  background-color: #1d3557;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.formulario button:hover,
+.generador button:hover,
+.boton-ejecutar:hover:not(:disabled) {
+  background-color: #457b9d;
+  transform: translateY(-2px);
+}
+
+.formulario button {
+  width: 100%;
+}
+
+.boton-ejecutar:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===================================
+   ALINEACIÓN DE SECCIONES
+   =================================== */
+
+.seccion-generador,
+.seccion-capacidad,
+.seccion-ejecutar {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.capacidad-info {
+  margin-top: 15px;
+  text-align: center;
+}
+
+
+/* ===================================
+   BARRA DE CAPACIDAD DEL VEHÍCULO
+   =================================== */
+
+
+/* Contenedor de la barra de capacidad */
+/* Cuadro de fondo de la barra de capacidad */
+.barra-capacidad-contenedor {
+  width: 100%;
+  max-width: none;
+  margin: 25px 0;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 1px solid #d9e1ea;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #213547;
+}
+
+/* Título de la barra */
+.barra-capacidad-contenedor {
+  width: 100%;
+  margin: 25px 0;
+  padding: 25px;
+  background-color: #ffffff;
+  border: 1px solid #d9e1ea;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #213547;
+}
+
+/* Barra más grande y visible */
+.barra-capacidad {
+  width: 100%;
+  height: 35px;
+  background-color: #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Progreso de capacidad */
+.barra-capacidad-progreso {
+  height: 100%;
+  background-color: #2a9d8f;
+  border-radius: 12px;
+  transition: width 0.4s ease;
+}
+
+/* Información debajo de la barra */
+.barra-capacidad-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.barra-capacidad-info strong {
+  font-size: 22px;
+  color: #1d3557;
+}
+
+.capacidad-completa {
+  margin-top: 12px;
+  color: #b45309;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .barra-capacidad-info {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+

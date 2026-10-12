@@ -9,6 +9,7 @@ import CapacidadForm from './components/CapacidadForm'
 import Resultados from './components/Resultados'
 import EjecutarAlgoritmo from './components/EjecutarAlgoritmo'
 import { pruebaOptimizacion } from './algorithms/pruebaOptimizacion'
+import Instrucciones from './components/Instrucciones'
 
 
 function App() {
@@ -66,6 +67,13 @@ const agregarPedido = (nuevoPedido) => {
 }
 
 const agregarPedidos = (cantidad) => {
+  if (pedidos.length + cantidad > 100) {
+    alert(
+      `El límite total es de 100 pedidos. Actualmente tiene ${pedidos.length}.`
+    )
+    return
+  }
+  
   const nuevosPedidos = generarPedidos(cantidad, siguienteNumero)
 
   setPedidos((anteriores) => [...anteriores, ...nuevosPedidos])
@@ -73,6 +81,28 @@ const agregarPedidos = (cantidad) => {
   setResultado(null)
 }
 
+
+const eliminarPedido = (id) => {
+  setPedidos((anteriores) =>
+    anteriores.filter((pedido) => pedido.id !== id)
+  )
+
+  setResultado(null)
+}
+
+const limpiarPedidos = () => {
+  const confirmar = window.confirm(
+    '¿Está seguro de que desea eliminar todos los pedidos?'
+  )
+
+  if (!confirmar) return
+  // Limpiar todos los pedidos
+  setPedidos([])
+  // Reiniciar el siguiente número de pedido a 1
+  setSiguienteNumero(1)
+  // Limpiar resultado anteriores
+  setResultado(null)
+}
 
   return (
     <main className="contenedor">
@@ -86,9 +116,11 @@ const agregarPedidos = (cantidad) => {
         </p>
       </header>
 
-      <section>
-        <PedidoForm agregarPedido={agregarPedido} />
-      </section>
+      <Instrucciones />
+
+        <section>
+          <PedidoForm agregarPedido={agregarPedido} />
+        </section>
 
       <section className="seccion-generador">
         <GeneradorPedidos agregarPedidos={agregarPedidos} />
@@ -106,7 +138,11 @@ const agregarPedidos = (cantidad) => {
       </section>
 
       <section className="seccion-pedidos">
-        <PedidoList pedidos={pedidos} />
+        <PedidoList
+          pedidos={pedidos}
+          eliminarPedido={eliminarPedido}
+          limpiarPedidos={limpiarPedidos}
+        />
       </section>
 
       <section className="seccion-ejecutar">
