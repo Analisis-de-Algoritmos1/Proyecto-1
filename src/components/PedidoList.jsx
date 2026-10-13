@@ -1,7 +1,7 @@
 // aqui se mostrara la lista de pedidos registrados
 // recibe los pedidos desde App.jsx y los organiza en una tabla para su visualización
 
-function PedidoList({ pedidos, eliminarPedido, limpiarPedidos }) {
+function PedidoList({ pedidos, eliminarPedido, limpiarPedidos, capacidad }) {
   return (
     <div>
       <h3>Pedidos registrados: {pedidos.length}</h3>
@@ -36,7 +36,16 @@ function PedidoList({ pedidos, eliminarPedido, limpiarPedidos }) {
                 <tr key={pedido.id}>
                   <td>{index + 1}</td>
                   <td>{pedido.nombre}</td>
-                  <td>{pedido.peso}</td>
+                  <td>
+                    {pedido.peso} kg
+
+                    {Number(capacidad) > 0 &&
+                      pedido.peso > Number(capacidad) && (
+                        <span className="advertencia-peso">
+                          Supera la capacidad
+                        </span>
+                      )}
+                  </td>
                   <td>{pedido.beneficio}</td>
                   <td>{pedido.x}</td>
                   <td>{pedido.y}</td>

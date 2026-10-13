@@ -19,38 +19,47 @@ function App() {
   const [resultado, setResultado] = useState(null)
 
   
+
 const ejecutarOptimizacion = () => {
   const capacidadNumero = Number(capacidad)
 
+  // Verificar que existan pedidos
   if (pedidos.length === 0) {
     alert('Primero debe registrar al menos un pedido.')
     return
   }
 
+  // Validar capacidad del vehículo
   if (
-    capacidad.trim() === '' ||
+    String(capacidad).trim() === '' ||
     !Number.isSafeInteger(capacidadNumero) ||
     capacidadNumero <= 0
   ) {
-    alert('Ingrese una capacidad entera mayor que cero.')
+    alert('La capacidad debe ser un número entero mayor que cero.')
     return
   }
 
-  if (
-    pedidos.some(
-      (pedido) =>
-        !Number.isSafeInteger(pedido.peso) ||
-        pedido.peso <= 0 ||
-        !Number.isFinite(pedido.beneficio) ||
-        pedido.beneficio <= 0
+  // Validar información de cada pedido
+  const pedidosInvalidos = pedidos.some((pedido) => {
+    return (
+      !pedido.nombre?.trim() ||
+      !Number.isSafeInteger(pedido.peso) ||
+      pedido.peso <= 0 ||
+      !Number.isSafeInteger(pedido.beneficio) ||
+      pedido.beneficio <= 0 ||
+      !Number.isFinite(pedido.x) ||
+      !Number.isFinite(pedido.y)
     )
-  ) {
+  })
+
+  if (pedidosInvalidos) {
     alert(
-      'Los pedidos deben tener pesos enteros positivos y beneficios válidos.'
+      'Revise los pedidos: nombre, peso, beneficio y coordenadas deben ser válidos.'
     )
     return
   }
 
+  // Ejecutar función temporal
   const nuevoResultado = pruebaOptimizacion(
     pedidos,
     capacidadNumero
@@ -73,7 +82,7 @@ const agregarPedidos = (cantidad) => {
     )
     return
   }
-  
+
   const nuevosPedidos = generarPedidos(cantidad, siguienteNumero)
 
   setPedidos((anteriores) => [...anteriores, ...nuevosPedidos])
@@ -142,6 +151,7 @@ const limpiarPedidos = () => {
           pedidos={pedidos}
           eliminarPedido={eliminarPedido}
           limpiarPedidos={limpiarPedidos}
+          capacidad={capacidad}
         />
       </section>
 

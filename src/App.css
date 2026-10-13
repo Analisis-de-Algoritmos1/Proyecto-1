@@ -725,3 +725,10 @@
   }
 }
 
+.advertencia-peso {
+  display: block;
+  margin-top: 5px;
+  color: #ff6b6b;
+  font-size: 12px;
+  font-weight: bold;
+}
