@@ -1,5 +1,15 @@
-// aqui se mostrara la lista de pedidos registrados
-// recibe los pedidos desde App.jsx y los organiza en una tabla para su visualización
+/**
+ * Función: Muestra los pedidos registrados en una tabla y permite
+ * eliminarlos individualmente o limpiar el listado completo.
+ * También identifica los pedidos cuyo peso supera la capacidad
+ * del vehículo.
+ *
+ * Entradas: Lista de pedidos, capacidad del vehículo y funciones
+ * para eliminar o limpiar registros.
+ *
+ * Salidas: Tabla actualizada, resumen de pedidos y advertencias
+ * de capacidad cuando corresponda.
+ */
 
 function PedidoList({ pedidos, eliminarPedido, limpiarPedidos, capacidad }) {
   return (

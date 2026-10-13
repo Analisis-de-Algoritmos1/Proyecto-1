@@ -1,3 +1,14 @@
+/**
+ * Función: Presenta el botón que permite iniciar el proceso de
+ * optimización y evita su ejecución cuando no existen
+ * pedidos registrados.
+ *
+ * Entradas: Función de ejecución del algoritmo y estado
+ * que indica si el botón debe estar habilitado.
+ *
+ * Salidas: Solicitud de ejecución enviada al
+ * componente principal.
+ */
 
 function EjecutarAlgoritmo({ ejecutar, deshabilitado }) {
   return (

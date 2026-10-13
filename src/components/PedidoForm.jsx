@@ -1,6 +1,18 @@
 
 import { useState } from 'react'
 
+/**
+ * Función: Permite al usuario registrar pedidos manualmente,
+ * verificando que los datos ingresados sean válidos antes
+ * de agregarlos al sistema.
+ *
+ * Entradas: Nombre del pedido, peso, beneficio y
+ * coordenadas X e Y.
+ *
+ * Salidas: Objeto con la información del pedido registrado,
+ * que se envía al componente principal para almacenarlo.
+ */
+
 function PedidoForm({ agregarPedido }) {
   const [nombre, setNombre] = useState('')
   const [peso, setPeso] = useState('')

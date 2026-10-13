@@ -1,8 +1,13 @@
-//generador de pedidos
-//esta función genera un pedido aleatorio con los datos necesarios para el registro del pedido
-//Math.random() genera numero aleatorios
-//Math.floor() redondea hacia abajo
-
+/**
+ * Función: Genera pedidos con identificadores únicos y valores
+ * aleatorios de peso, beneficio y coordenadas, manteniendo
+ * una numeración consecutiva.
+ *
+ * Entradas: Cantidad de pedidos y número inicial de la secuencia.
+ *
+ * Salidas: Arreglo de objetos que contiene todos los
+ * pedidos generados.
+ */
 
 export function generarPedidos(cantidad, numeroInicial = 1) {
   const pedidos = []

@@ -1,3 +1,13 @@
+/**
+ * Función: Muestra gráficamente el porcentaje de capacidad
+ * utilizado por los pedidos seleccionados.
+ *
+ * Entradas: Peso total de los pedidos seleccionados y
+ * capacidad máxima del vehículo.
+ *
+ * Salidas: Barra de progreso con el porcentaje de utilización
+ * y los kilogramos utilizados.
+ */
 
 function BarraCapacidad({ pesoTotal, capacidad }) {
   const capacidadNumero = Number(capacidad)

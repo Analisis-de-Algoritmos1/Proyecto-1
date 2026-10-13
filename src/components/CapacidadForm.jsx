@@ -1,4 +1,13 @@
-//funcion encargada de definir la capacidad del vehiculo
+/**
+ * Función: Permite establecer o modificar el peso máximo
+ * que puede transportar el vehículo.
+ *
+ * Entradas: Capacidad máxima ingresada por el usuario,
+ * expresada en kilogramos.
+ *
+ * Salidas: Capacidad actualizada que se utiliza para validar
+ * pedidos y ejecutar la optimización.
+ */
 
 function CapacidadForm({ capacidad, setCapacidad }) {
   return (

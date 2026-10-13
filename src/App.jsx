@@ -11,15 +11,26 @@ import EjecutarAlgoritmo from './components/EjecutarAlgoritmo'
 import { pruebaOptimizacion } from './algorithms/pruebaOptimizacion'
 import Instrucciones from './components/Instrucciones'
 
+/**
+ * Función: Es el componente principal del sistema. Se encarga de
+ * administrar los pedidos, controlar la capacidad del vehículo,
+ * coordinar los demás componentes y gestionar la ejecución
+ * de la optimización.
+ *
+ * Entradas: Información de los pedidos registrados, capacidad
+ * del vehículo y acciones realizadas por el usuario.
+ *
+ * Salidas: Interfaz actualizada con los pedidos, la capacidad
+ * configurada y los resultados de la optimización.
+ */
 
 function App() {
   const [pedidos, setPedidos] = useState([])
   const [siguienteNumero, setSiguienteNumero] = useState(1)
   const [capacidad, setCapacidad] = useState('100')
   const [resultado, setResultado] = useState(null)
-
   
-
+  
 const ejecutarOptimizacion = () => {
   const capacidadNumero = Number(capacidad)
 

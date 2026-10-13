@@ -1,8 +1,14 @@
-//funcion para generar pedidos.
-//esta función recibe un parámetro cantidad que indica la cantidad de pedidos a generar
-
-
 import { useState } from 'react'
+
+/**
+ * Función: Permite al usuario indicar cuántos pedidos desea
+ * generar automáticamente para realizar pruebas en el sistema.
+ *
+ * Entradas: Cantidad de pedidos que se desean generar.
+ *
+ * Salidas: Solicitud de generación de la cantidad indicada,
+ * que se envía al componente principal.
+ */
 
 function GeneradorPedidos({ agregarPedidos }) {
   const [cantidad, setCantidad] = useState('5')

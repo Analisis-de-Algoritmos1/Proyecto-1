@@ -1,5 +1,19 @@
 import BarraCapacidad from './BarraCapacidad'
 
+/**
+ * Función: Presenta la información obtenida después de ejecutar
+ * el proceso de selección de pedidos, incluyendo estadísticas
+ * y el listado de pedidos seleccionados.
+ *
+ * Entradas: Resultado del algoritmo y capacidad configurada
+ * del vehículo.
+ *
+ * Salidas: Cantidad de pedidos procesados y seleccionados,
+ * peso total, beneficio acumulado, porcentaje de utilización,
+ * tiempo de ejecución, operaciones realizadas y tabla
+ * de pedidos seleccionados.
+ */
+
 function Resultados({ resultado, capacidad }) {
   if (!resultado) {
     return (

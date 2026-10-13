@@ -1,3 +1,13 @@
+/**
+ * Función: Proporciona instrucciones para que el usuario
+ * comprenda cómo registrar pedidos, configurar la capacidad
+ * y ejecutar la optimización.
+ *
+ * Entradas: No requiere datos ingresados por el usuario.
+ *
+ * Salidas: Sección desplegable con las instrucciones
+ * de funcionamiento del sistema.
+ */
 
 function Instrucciones() {
   return (

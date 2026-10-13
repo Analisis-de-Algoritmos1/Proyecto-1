@@ -1,5 +1,19 @@
-// funcion encargada de realizar la prueba de optimizacion de pedidos
-// compramos a ver si los botones de ejecutar optimizacion y generar pedidos funcionan correctamente
+/**
+ * Función: Realiza una selección temporal de pedidos,
+ * recorriendo la lista y agregando aquellos que no
+ * superan la capacidad disponible del vehículo.
+ *
+ * Entradas: Lista de pedidos registrados y capacidad
+ * máxima del vehículo.
+ *
+ * Salidas: Pedidos seleccionados, cantidad procesada,
+ * peso acumulado, beneficio total, tiempo de ejecución
+ * y número de operaciones realizadas.
+ *
+ * Nota: Esta función es temporal y no garantiza el
+ * beneficio máximo. Será reemplazada por el algoritmo
+ * de Programación Dinámica de Mochila 0/1.
+ */
 
 export function pruebaOptimizacion(pedidos, capacidad) {
   const inicio = performance.now()
