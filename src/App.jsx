@@ -10,6 +10,7 @@ import Instrucciones from './components/Instrucciones'
 import { generarPedidos } from './utils/generarPedidos'
 import { optimizarCarga } from './services/optimization'
 import './App.css'
+import TablaDP from './components/TablaDP'
 
 /**
  * Función: Componente principal del sistema.
@@ -69,6 +70,24 @@ function App() {
       return
     }
 
+    // Protección contra tablas DP excesivamente grandes
+    const limiteEstadosDP = 200000
+
+    const estadosEstimados =
+      (pedidos.length + 1) * (capacidadNumero + 1)
+
+    if (estadosEstimados > limiteEstadosDP) {
+      alert(
+        'La cantidad de pedidos y la capacidad generan una tabla ' +
+        'demasiado grande para procesar.\n\n' +
+        `Estados estimados: ${estadosEstimados.toLocaleString('es-CR')}\n` +
+        `Máximo permitido: ${limiteEstadosDP.toLocaleString('es-CR')}\n\n` +
+        'Reduzca la capacidad o la cantidad de pedidos.'
+      )
+
+      setResultado(null)
+      return
+    }
     // Ejecutar el algoritmo de Programación Dinámica de Selwyn
     const resultadoDP = optimizarCarga(pedidos, capacidadNumero)
 
@@ -192,6 +211,16 @@ function App() {
           capacidad={capacidad}
         />
       </section>
+
+      {resultado?.tablaDP && (
+        <section className="seccion-tabla-dp">
+          <TablaDP
+            key={resultado.tablaDP}
+            tablaDP={resultado.tablaDP}
+            pedidos={pedidos}
+          />
+        </section>
+      )}
     </main>
   )
 }
