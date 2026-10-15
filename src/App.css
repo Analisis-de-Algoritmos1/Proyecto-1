@@ -345,3 +345,154 @@
     text-align: center;
   }
 }
+
+/* Visualización de la tabla de Programación Dinámica */
+
+.tabla-dp-contenedor {
+  padding: 24px;
+  border-radius: 12px;
+  background: #1e293b;
+  color: #f8fafc;
+  margin-top: 20px;
+}
+
+.tabla-dp-contenedor h2 {
+  margin-bottom: 12px;
+}
+
+.tabla-dp-controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.tabla-dp-controles button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  border: none;
+}
+
+.tabla-dp-controles button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tabla-dp-scroll {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+.tabla-dp {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+}
+
+.tabla-dp th,
+.tabla-dp td {
+  padding: 10px;
+  border: 1px solid #475569;
+  text-align: center;
+  min-width: 55px;
+}
+
+.tabla-dp th {
+  background: #334155;
+  color: white;
+}
+
+.tabla-dp .dp-completado {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+.tabla-dp .dp-actual {
+  background: #16a34a;
+  color: white;
+  font-weight: bold;
+}
+
+.tabla-dp .dp-pendiente {
+  background: #0f172a;
+  color: #64748b;
+}
+
+.tabla-dp-final {
+  margin-top: 18px;
+  color: #4ade80;
+  font-weight: bold;
+}
+
+/* Controles de animación de la tabla DP */
+
+.tabla-dp-velocidad {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f8fafc;
+  font-weight: 500;
+}
+
+.tabla-dp-velocidad select {
+  padding: 9px 12px;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  background: #334155;
+  color: #f8fafc;
+  cursor: pointer;
+}
+
+/* Panel explicativo de los estados DP */
+
+.tabla-dp-explicacion {
+  margin: 18px 0;
+  padding: 18px;
+  border-radius: 10px;
+  background: #0f172a;
+  border: 1px solid #475569;
+}
+
+.tabla-dp-explicacion h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  color: #93c5fd;
+}
+
+.tabla-dp-explicacion p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.tabla-dp-decision {
+  margin-top: 14px !important;
+  padding: 12px;
+  border-left: 4px solid #22c55e;
+  background: #1e293b;
+  border-radius: 6px;
+  color: #86efac;
+}
+
+/* Advertencia para tablas DP demasiado grandes */
+
+.tabla-dp-advertencia {
+  margin-top: 18px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #422006;
+  border: 1px solid #f59e0b;
+  color: #fef3c7;
+}
+
+.tabla-dp-advertencia h3 {
+  margin-top: 0;
+  color: #fbbf24;
+}
+
+.tabla-dp-advertencia p {
+  line-height: 1.6;
+}
