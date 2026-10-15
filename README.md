@@ -1,16 +1,75 @@
-# React + Vite
+# Proyecto 1 - Ruteo y Planificación de Cargas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto desarrollado para el curso **IC-3002 Análisis de Algoritmos** del Tecnológico de Costa Rica.
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Este proyecto consiste en una aplicación web para la planificación de cargas de un vehículo. La aplicación permite ingresar pedidos manualmente o generarlos de forma aleatoria, indicando su peso, beneficio y ubicación.
 
-## React Compiler
+El objetivo es seleccionar la combinación de pedidos que genere el mayor beneficio posible sin superar la capacidad máxima del vehículo.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Para realizar la optimización se utiliza **Programación Dinámica**, específicamente el algoritmo de la **Mochila 0/1**.
 
-## Expanding the ESLint configuration
+## Funcionalidades
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Ingreso manual de pedidos.
+- Generación aleatoria de pedidos.
+- Configuración de la capacidad máxima del vehículo.
+- Optimización de pedidos mediante Programación Dinámica.
+- Visualización de pedidos disponibles y seleccionados.
+- Visualización paso a paso de la tabla de Programación Dinámica.
+- Visualización del porcentaje de capacidad utilizada.
+- Cálculo del peso total de los pedidos seleccionados.
+- Cálculo del beneficio total obtenido.
+- Medición del tiempo de ejecución.
+- Conteo de estados explorados.
+- Validación de los datos ingresados.
+
+## Algoritmo utilizado
+
+Se utiliza el algoritmo de la **Mochila 0/1 mediante Programación Dinámica**.
+
+Cada pedido puede ser seleccionado completamente o no ser seleccionado. El algoritmo construye una tabla donde analiza cada pedido con respecto a las diferentes capacidades disponibles y determina la combinación que produce el mayor beneficio sin superar la capacidad máxima.
+
+La complejidad temporal del algoritmo es:
+
+**O(nw)**
+
+Donde:
+
+- `n` = cantidad de pedidos.
+- `w` = capacidad máxima del vehículo.
+
+## Tecnologías utilizadas
+
+- React
+- Vite
+- JavaScript
+- CSS
+
+## Ejecución del proyecto
+
+Para ejecutar el proyecto de forma local es necesario tener instalado Node.js.
+
+Primero se deben instalar las dependencias:
+
+```bash
+npm install
+```
+
+Luego se inicia la aplicación:
+
+```bash
+npm run dev
+```
+
+Después se debe abrir en el navegador la dirección mostrada por Vite, normalmente:
+
+```text
+http://localhost:5173/
+```
+
+## Integrantes
+
+- Selwyn Castro
+- Koen Brayan
