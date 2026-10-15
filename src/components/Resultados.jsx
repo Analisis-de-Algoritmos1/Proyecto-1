@@ -1,5 +1,5 @@
 import BarraCapacidad from './BarraCapacidad'
-
+import { formatearNombre } from '../utils/formatearNombre'
 /**
  * Función: Presenta la información obtenida después de ejecutar
  * el proceso de selección de pedidos, incluyendo estadísticas
@@ -105,7 +105,7 @@ function Resultados({ resultado, capacidad }) {
               {pedidosSeleccionados.map((pedido, index) => (
                 <tr key={pedido.id}>
                   <td>{index + 1}</td>
-                  <td>{pedido.nombre}</td>
+                  <td>{formatearNombre(pedido.nombre)}</td>
                   <td>{pedido.peso}</td>
                   <td>{pedido.beneficio}</td>
                   <td>{pedido.x}</td>
