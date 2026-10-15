@@ -1,3 +1,4 @@
+import { formatearNombre } from '../utils/formatearNombre'
 /**
  * Función: Muestra los pedidos registrados en una tabla y permite
  * eliminarlos individualmente o limpiar el listado completo.
@@ -45,7 +46,7 @@ function PedidoList({ pedidos, eliminarPedido, limpiarPedidos, capacidad }) {
               {pedidos.map((pedido, index) => (
                 <tr key={pedido.id}>
                   <td>{index + 1}</td>
-                  <td>{pedido.nombre}</td>
+                  <td>{formatearNombre(pedido.nombre)}</td>
                   <td>
                     {pedido.peso} kg
 
